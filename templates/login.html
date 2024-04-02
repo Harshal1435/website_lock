@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facial Authentication Website</title>
+  
+    
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="containerHeader">
+      <h1>login</h1>
+    </div>
+    <div>
+    <div class="register">
+      <video id="video" class="video" autoplay></video>
+
+      <!-- BUTTON CAPTURE PHOTO -->
+
+      <canvas class="canvas" id="canvas" width="400" height="280" style="display: none;">
+
+      </canvas>
+
+      <input class="name" name="text" id="name" required name="" placeholder="Create user id">
+
+      <button onclick="login(),capture()">Login</button>
+      <button><a href="/newuser">REGISTER NEW</a></button>
+    </div>
+
+
+    <script src="/static/JS/script-page.js"> </script>
+    <script src="/static/JS/script.js"></script>
+    
+</body>
+
+</html>

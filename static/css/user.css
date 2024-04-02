@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+}
+
+.container {
+  flex-direction: column;
+  width: 50vw;
+  min-height: 60vh;
+  background: #303030;
+  box-shadow: 3px 0px 20px #5f5959;
+  border-radius: 5px;
+  /* display: flex; */
+}
+.containerHeader {
+  width: 50vw;
+  height: 10vh;
+ flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #45f3ff;
+  font-size: 1.8rem;
+}
+.register{
+
+width:100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
+
+}
+#video{
+  height:80%;
+  width:80%;
+  border-radius:30px;
+  
+}
+.name{
+  margin-top: 5px;
+  width:80%;
+  height:30px;
+  background-color: #222;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+}
+input{
+  color:aliceblue;
+  
+}
+
+button{
+  margin-top: 5px;
+  width:80%;
+  height:30px;
+  border-radius: 30px;
+  border-radius: none;
+  background-color: aqua;
+  cursor: pointer;
+}
+/* Media queries for responsiveness */
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%; /* Adjust container width for smaller screens */
+  }
+
+  .containerHeader {
+    font-size: 1.5rem;
+  }
+
+  .name,
+  button {
+    width: 90%; /* Adjust input field and button width for smaller screens */
+    max-width: none; /* Remove maximum width restriction */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .containerHeader {
+    font-size: 1.2rem;
+  }
+
+  .name,
+  button {
+    width: 90%; /* Further adjust input field and button width for smaller screens */
+  }
+}

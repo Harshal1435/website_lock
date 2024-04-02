@@ -1,0 +1,307 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  /* width: 100%; */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+}
+
+@property --x {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.box {
+  position: relative;
+  width: 600px;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: repeating-conic-gradient(
+    from var(--x),
+    #45f3ff 0%,
+    #45f3ff 10%,
+    transparent 10%,
+    transparent 50%
+  );
+  animation: myAnimate 6s linear infinite;
+}
+@keyframes myAnimate {
+  0% {
+    --x: 0deg;
+  }
+  100% {
+    --x: 360deg;
+  }
+}
+
+.box::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from var(--x),
+    #45f3ff 0%,
+    #45f3ff 10%,
+    transparent 10%,
+    transparent 50%
+  );
+  animation: myAnimate 6s linear infinite;
+  animation-delay: -1.5s;
+}
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 20px solid #222;
+  background: #303030;
+}
+
+/* ------------------- */
+@media only screen and (max-width: 480px) {
+  .box {
+    position: relative;
+    width: 85vw;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: repeating-conic-gradient(
+      from var(--x),
+      #45f3ff 0%,
+      #45f3ff 10%,
+      transparent 10%,
+      transparent 50%
+    );
+    animation: myAnimate 6s linear infinite;
+  }
+
+  form h2 {
+    color: #45f3ff;
+    font-weight: 600;
+    margin-top: -5rem;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.1rem;
+    font-size: 2rem;
+  }
+  form .input-box {
+    position: relative;
+    margin-bottom: 40px;
+    width: 55vw;
+  }
+  .input-box span {
+    position: absolute;
+    inset: -2px;
+    z-index: 1;
+  }
+  .input-box span::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: repeating-conic-gradient(
+      from var(--x),
+      #45f3ff 0%,
+      #45f3ff 10%,
+      transparent 10%,
+      transparent 50%
+    );
+    animation: myAnimate 6s linear infinite;
+    box-shadow: 0 0 0 2px #000;
+  }
+  .input-box:nth-child(2) span::before {
+    animation-delay: -1.5s;
+  }
+
+  .input-box span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #292929;
+  }
+  .input-box input {
+    position: relative;
+    z-index: 100000;
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 8px 14px;
+    background: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+  .input-box input::placeholder {
+    color: #fff;
+    opacity: 0.5rem;
+  }
+  .input-box input[type="submit"] {
+    background: #45f3ff;
+    cursor: pointer;
+    box-shadow: 0 0 0 4px #45f3ff;
+    width: 100%;
+    font-weight: 600;
+    color: #292929;
+    filter: drop-shadow(0 0 15px #45f3ff);
+    margin-top: 40px;
+    /* transition: all ease-in-out;
+      scale: 1px; */
+  }
+  .group {
+    position: relative;
+    top: 5vh;
+    padding-bottom: 60px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  #grp1 {
+    position: relative;
+    top: 1rem;
+    left: 2.5rem;
+    color: #fff8;
+    font-size: 0.75em;
+  }
+  #grp2 {
+    margin-left: -10em;
+    position: relative;
+    top: 4rem;
+    left: -5.3rem;
+    color: #45f3ff;
+  }
+  .group a {
+    margin-top: 40px;
+    text-decoration: none;
+    color: #fff8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75em;
+  }
+  #grp2:nth-child(2),
+  #grp1:hover {
+    color: #45f3ff;
+    /* transform: scale(1.2) ; */
+    transform: scale3d(1.2);
+    filter: drop-shadow(0 0 5px #45f3ff);
+  }
+  .group a:hover:nth-child(2) {
+    color: #45f3ff;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px #45f3ff);
+  }
+}
+/* ------------------- */
+
+/* Form  */
+form {
+  position: relative;
+  z-index: 1000;
+}
+form h2 {
+  color: #45f3ff;
+  font-weight: 500;
+  margin-bottom: 50px;
+  padding-top: 60px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.input-box {
+  position: relative;
+  margin-bottom: 40px;
+  width: 340px;
+}
+.input-box span {
+  position: absolute;
+  inset: -2px;
+  /* background: red; */
+  z-index: 1;
+}
+.input-box span::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: repeating-conic-gradient(
+    from var(--x),
+    #45f3ff 0%,
+    #45f3ff 10%,
+    transparent 10%,
+    transparent 50%
+  );
+  animation: myAnimate 6s linear infinite;
+  box-shadow: 0 0 0 2px #000;
+}
+.input-box:nth-child(2) span::before {
+  animation-delay: -1.5s;
+}
+.input-box span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #292929;
+}
+.input-box input {
+  position: relative;
+  z-index: 100000;
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.input-box input::placeholder {
+  color: #fff;
+  opacity: 0.5rem;
+}
+.input-box input[type="submit"] {
+  background: #45f3ff;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px #45f3ff;
+  width: 100%;
+  font-weight: 600;
+  color: #292929;
+  filter: drop-shadow(0 0 15px #45f3ff);
+  margin-top: 40px;
+  /* transition: all ease-in-out;
+    scale: 1px; */
+}
+.group {
+  position: relative;
+  top: -10px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.group a {
+  margin-top: 40px;
+  text-decoration: none;
+  color: #fff8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75em;
+}
+.group a:nth-child(2),
+.group a:hover {
+  color: #45f3ff;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 5px #45f3ff);
+}
+.group a:hover:nth-child(2) {
+  /* color: #45f3ff; */
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 5px #45f3ff);
+}

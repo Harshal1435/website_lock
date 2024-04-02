@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Storage</title>
+</head>
+<body>
+    <h1>Video Storage</h1>
+    
+    <!-- Form to upload video -->
+    <form action="#" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*" required>
+        <button type="submit">Upload Video</button>
+    </form>
+
+    <!-- Display uploaded videos -->
+    <h2>Uploaded Videos</h2>
+    <ul id="videoList">
+        <!-- Videos will be listed here -->
+    </ul>
+
+    <script>
+        // Function to display uploaded videos
+        function displayVideo(fileName) {
+            const videoList = document.getElementById("videoList");
+            const listItem = document.createElement("li");
+            const video = document.createElement("video");
+            const source = document.createElement("source");
+
+            video.controls = true;
+            source.src = fileName;
+            source.type = "video/mp4";
+
+            video.appendChild(source);
+            listItem.appendChild(video);
+            videoList.appendChild(listItem);
+        }
+
+        // Check if there are any videos stored in localStorage and display them
+        if (localStorage.getItem("videos")) {
+            const storedVideos = JSON.parse(localStorage.getItem("videos"));
+            storedVideos.forEach(video => {
+                displayVideo(video);
+            });
+        }
+
+        // Handle form submission
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const fileInput = document.querySelector("input[type='file']");
+            const videoFile = fileInput.files[0];
+
+            if (videoFile) {
+                const fileName = URL.createObjectURL(videoFile);
+                displayVideo(fileName);
+
+                // Save video file name to localStorage
+                let storedVideos = localStorage.getItem("videos") ? JSON.parse(localStorage.getItem("videos")) : [];
+                storedVideos.push(fileName);
+                localStorage.setItem("videos", JSON.stringify(storedVideos));
+            }
+
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
